@@ -1,71 +1,704 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Data science meetup 2013 by mlunacek</title>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Many-Task Computing with Python</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Data science meetup 2013</h1>
-        <p>Code and slides for the data science meetup in September 2013</p>
+	<!-- <link rel="stylesheet" href="css/screen.css"> -->
+	<style>
+	@import url(css/screen.css);
+	@import url(css/tmp.css);
+	@import url(css/styles/default.css);
+	</style>
 
-        <p class="view"><a href="https://github.com/mlunacek/data_science_meetup_2013">View the Project on GitHub <small>mlunacek/data_science_meetup_2013</small></a></p>
+	<script src="js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body class="list">
+
+<header class="caption">
+	<h1>Many-Task Computing with Python</h1>
+	<p>Monte Lunacek</p>
+	<p>University of Colorado <b>Boulder</b></p>
+</header>
+
+<section class="slide cover">
+	<div>
+		<h2>Many-Task Computing with Python</h2>
+		<p>Monte Lunacek</p>
+	</div>
+	<div class="footer">Research Computing, University of Colorado <b>Boulder</b></div>
+</section>
+<!-- beginning of slides -->
+
+<section class="slide"><div>
+<h2>Outline</h2>
+
+<ol>
+<li>High Performance Computing
+<ul>
+	<li>Current types of applications</li>
+	<li>Define Many-task computing</li>
+</ul>
+</li>
+<li>Why Python for HPC?
+	<ul>	
+	<li>Key packages for scientific computing</li>
+	<li>Abstraction</li>
+	</ul>
+	</li>
+<li>Many-task computing with Python
+<ul><li>Scaling</li> </ul>
+</li>
+</ol>
+Conclusions, questions
+</div></section>
+
+<section class="slide"><div>
+<h2>Goals</h2>
+
+<ol>
+<li>Understand the landscape of HPC</li>
+<li>Links to key packages</li>
+<li>Tools
+	<ul>	
+	<li>Notebook</li>
+	<li>Easy parallelism</li>
+	</ul>
+	</li>
+<li>Lots of examples<ul>	
+	<li>Learn something useful</li>
+	<li>Download and try it!</li>
+	</ul>
+	</li></ol>
+</div></section>
 
 
-        <ul>
-          <li><a href="https://github.com/mlunacek/data_science_meetup_2013/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/mlunacek/data_science_meetup_2013/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/mlunacek/data_science_meetup_2013">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<section class="slide sub">
+<div>
+<img src="img/parallel.png" style="margin:30px auto;display:block; height:400px"  alt="some_text">	
+<h2>High Performance Computing</h2>
+</div>
+</section>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<section class="slide">
+<div>
+<h2>Using applications to solve problems</h2>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<ol>
+<li>Size<ul>
+	<li>Solve problems that can't fit on a laptop  </li>
+	<li>Need more than a few GB of RAM</li>
+	<li>Need more than a few hundred GB of Disk</li>
+	</ul>
+</li>
+<li>Speed<ul>
+	<li>Same problem, faster</li>
+	<li>Makes a bigger problem more feasible</li>
+	</ul>
+</li>
+
+<p class="cite">Henry Neeman, <a href="http://www.oscer.ou.edu/education.php">Super Computing in Plain English</a></p>
+
+</ol>
+
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2><strong>Supercomputing</strong></h2> 	
+
+<div class='col3 right'>
+<img src="img/infiniband.png" style="margin:0px auto;display:block; height: 300px;"  alt="img/infiniband.png">	
+</div>
+
+<div class='col4'>
+<ul>
+<li>Definition changes daily!</li>
+<li>Cluster of computers linked together</li>
+<li>100x bigger, faster, better than a PC</li>
+</ul>
+</div>
+
+
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+
+<h2> <strong>Janus</strong> macbook comparison</h2>
+
+<img src="img/janus.png" style="margin:10px auto;display:block; height: 250px;"  alt="img/janus.png">	
+
+<table class="table table-bordered table-striped">
+	<thead>
+	<tr>
+		<th>Macbook</th>
+		<th>Janus</th>
+		<th></th>
+	</tr>
+	</thead>	
+	<tr>
+	    <td>2.4 GHz Intel x2</td>
+	    <td>2.8 GHz Intel x12 X 1360</td>
+	    <td>~8000X</tr>
+	</tr>
+	<tr>
+	    <td>8 GB RAM</td>
+	    <td>24 GB RAM</td>
+	     <td>~4000X</td>
+	</tr>
+	<tr>
+	    <td>3 M cache</td>
+	    <td>12 M cache</td>
+	    <td></td>
+	</tr>
+</table>
+
+</section>
+</div>
+
+
+<section class="slide">
+<div>
+<h2><strong>Parallel</strong> Computing</h2>
+
+<div class="col2 left">
+	<p><strong>Traditional</strong></p>	
+	<p>Shared Memory: OpenMP</p>
+	<p>Distributed: MPI</p>
+	<p>Accelerator: OpenACC, CUDA</p>
+	<p>Hybrid</p>
+</div>
+
+<div class="col2 left">
+	<p><strong>New</strong></p>
+	<p>MapReduce</p>
+	<p>Message brokers: AMQP, ZeroMQ</p>
+</div>
+
+<div class="col4">
+<br>
+<ul>
+<li>Solve a different problem</li>
+<li>Offer a different set of characteristics</li>
+</ul>	
+</div>
+
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<h2>Landscape of Applications</h2>
+
+<img src="img/MTC.svg" style="margin:10; auto;display:block; height: 450px;">
+<p class="cite">Ioan Raicu, <a href="http://datasys.cs.iit.edu/publications/2009_PhD-UChicago_dissertation.pdf">Many-Task Computing: Bridging the Gap between High Throughput Computing and High Performance Computing</a></p>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Comparing MTC and HTC</h2>
+<!-- <figure>
+		<blockquote>
+			<p>applications that are communication-intensive but are not naturally expressed in MPI  <em>Ioan Raicu</em></p>
+		</blockquote>
+		
+	</figure> -->
+<ul>
+	<li>
+<strong>Many-task Computing</strong>  (MTC)
+		<ul><li>use a large resources over a short period</li>
+			<li>may not be single-core and independent</li>
+			<li><em>peformance per second</em></li>
+		</ul>
+
+<li>
+<strong>High-throughput Computing</strong>  (HTC)
+<ul>
+	<li>operations per month</li>
+</ul>
+</li>
+</ul>
+	
+<blockquote>
+<p>applications that are communication-intensive but are not naturally expressed in MPI  </p>
+</blockquote>
+
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>University of Colorado</h2>
+<!-- <img src="img/MTC_cu.svg" style="position: absolute;left: 300px; top: 150px; auto;display:block; height: 500px;"> -->
+<ul>
+<li>Some tightly-coupled MPI codes</li>
+<li>Many simulations
+<ul>
+	<li>Monte Carlo, parameter scans, UQ, parameter optimization</li>
+	</ul>
+</li>
+<li>Diverse computing backgrounds
+	<ul>
+	<li>Geography, Ecology and Evolutionary Biology, Microbial Ecology,
+		Geology, Astronomy</li>
+	</ul>
+</li>
+<li>Range of computational experience</li>
+</ul>
+
+</div>
+</section>
+
+
+
+<section class="slide sub">
+<div>
+<img src="img/monty-python.png" style="margin:20px auto;display:block; height:400px"  alt="monty-python.jpg">	
+<h2>Python for High Performance Computing</h2>
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+
+<div class="col13 left">	
+<p><strong>Base</strong></p>
+
+<p><code><a href="https://http://www.numpy.org"> numpy </a></code></p>
+<p><a href="https://http://scipy.org"> scipy </a></p>
+<p><a href="http://matplotlib.sourceforge.net/">matplotlib </a> </p>
+<p><code><a href="http://ipython.org">ipython</a></code></p>
+</div>
+
+<div class="col13 left">	
+<p><strong>Effciency</strong></p>
+<p><a href="http://pypy.org">pyp</a></p>
+<p><a href="http://numba.pydata.org/">numba</a></p>
+<p><a href="http://www.scipy.org/F2py"> f2py</a></p>
+<p><a href="http://docs.cython.org/">cython</a></p>
+</div>
+
+<div class="col13 left">
+<p><strong>Parallel</strong></p>
+<p><code><a href="http://ipython.org/ipython-doc/dev/parallel/">ipython parallel</a></code></p>
+<p><a href="http://www.pytables.org/moin">celery </a></p>
+<p><a href="http://discoproject.org/">scoop</a></p>
+<p>and many more...</p>
+</div>
+
+<div class="col13 left">
+<p><strong>Data</strong></p>
+<p><code><a href="http://pandas.pydata.org/">pandas </a> </code></p>
+<p><a href="http://www.pytables.org/moin">pytables </a></p>
+<p><a href="http://discoproject.org/">disco</a></p>
+<p><a href="http://spark.incubator.apache.org/">spark</a></p>
+</div>
+
+
+
+<div class="col13 left">
+<p><strong>HPC</strong></p>
+<p><a href="http://mpi4py.scipy.org/">mpi4py </a> </p>
+<p><a href="http://docs.cython.org/src/userguide/parallelism.html">cython.parallel </a></p>
+<p><code><a href="https://store.continuum.io/cshop/accelerate/">multiprocessing</a></code></p>
+<p><a href="http://mathema.tician.de/software/pycuda">pycuda</a></p>
+<p><a href="https://store.continuum.io/cshop/accelerate/">Accelerate</a></p>
+</div>
+
+<p class='cite' style="left:700px;">Andy Terrel<a href="http://andy.terrel.us/blog/2012/09/27/starting-with-python/">Getting started with Python in HPC</a>
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<h2><strong>Success</strong> Stories</h2>
+
+<p>~500,000 simulations on ~7,000 cores with <a href="http://mpi4py.scipy.org/">mpi4py </a> </p>
+<p>Parameter optimization on ~100 cores with
+	<a href="https://code.google.com/p/scoop/"> Scoop </a>
+		and 
+	<a href="https://code.google.com/p/deap/"> DEAP </a>	
+	</p>
+	
+<p>Improved biological workflow with 
+	<a href="http://ipython.org/ipython-doc/dev/parallel/"> IPython Parallel </a></p>
+		
+<p>Wrapped an engineering simulation with 		
+	<a href="http://www.scipy.org/F2py"> f2py</a> and
+	<a href="http://ipython.org/ipython-doc/dev/parallel/"> IPython Parallel </a>
+
+<p>Packaged multiple MPI tasks with 
+	<a href="http://jinja.pocoo.org/docs/"> Jinja2 </a>
+
+<p>Benchmarking:
+<a href="http://mpi4py.scipy.org/">mpi4py </a>,	
+<a href="http://discoproject.org/"> pandas </a>,
+<a href="http://jinja.pocoo.org/docs/"> Jinja2 </a>,
+<a href="https://www.djangoproject.com/"> Django </a>
+
+<br>
+<br>
+<p>Working on <strong>MapReduce</strong> with 
+	<a href="http://discoproject.org/"> disco </a> and <a href="http://spark.incubator.apache.org/">spark</a>
+</p>
+<p>Working on <strong>Workflow</strong> with 
+	<a href="http://networkx.github.com/"> NetworkX </a>, <a href="http://ipython.org/ipython-doc/dev/parallel/"> IPython Parallel </a>, and 
+	<a href="https://code.google.com/p/scoop/"> Scoop </a>
+</p>
+</div>
+</section>
+
+
+<section class="slide"><div>
+<h2>Why Python?</h2>
+
+<ul>
+<li>flexible, powerful programming language</li>
+<li>easy to learn</li>
+<li>accessible to <em>non-programmers</em></li>
+<li>glue</li>
+<li>free and open</li>
+<li>large community</li>
+<li><strong>Abstraction</strong></li>
+</ul>
+
+</div></section>
+
+<section class="slide">
+<div>
+<h2>Numpy (MKL) and Pytables</h2>
+
+<pre class="python"><code>import numpy as np
+import tables as tb
+
+def read_h5(filename):
+    filename = filename
+    h5 = tb.openFile(filename, mode = "r")
+    X = h5.root.x.read()
+    h5.close()
+    return X
+
+if __name__ == '__main__':
+
+    args = get_args(sys.argv[1:])
+	
+	A = read_h5(args.matrixA)
+	B = read_h5(args.matrixB)
+	C = np.dot(A,B)
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+</div>
+</section>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<section class="slide">
+<div>
+<h2>2 reads, multiply, 1 write</h2>
+<img src="img/matrix_multiply_compare.png" style="margin:5px auto; height:500px; display:block;">	
+</div>
+</section>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<section class="slide">
+<div>
+<h2>mpy4py</h2>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<pre class="python"><code>from mpi4py import MPI
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+if rank == 0:
+   
+   data = {'key1' : [7, 2.72, 3.2],
+           'key2' : ( 'abc', 'xyz')}
+else:
+   data = None
+   
+data = comm.bcast(data, root=0)
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+</div>
+</section>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/mlunacek">mlunacek</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+
+<section class="slide sub">
+<div>
+<img src="img/manytask.png" style="margin:30px auto;display:block; height:400px"  alt="some_text">	
+<h2>Many-Task Computing</h2>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Many-task Computing</h2>
+
+<pre class="python"><code>#!/usr/bin/env python
+import argparse, sys, time
+
+def get_args(argv):
+    parser = argparse.ArgumentParser()  
+    parser.add_argument('-t','--time', help='e.g. --time=50')
+    return parser.parse_args(argv)
+
+def work(x):
+    time.sleep(x)
+    return x
+
+if __name__ == '__main__':
+
+    args = get_args(sys.argv[1:])
+    work(float(args.time))
+</code></pre>
+<p style="margin-top: 10px;">What is the more efficient way to execute <em>work</em> a thousand times?</p>
+
+<pre class="python"><code>python work.py --time=10
+</code></pre>
+
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<h2>Approach</h2>
+
+Condor/Moab/SLURM
+<br>
+Bash/pbsdsh: painful example
+<br>
+MPI <strong>mpi4py</strong>: not exactly what we want
+<br>
+Python
+<ul>
+<li>SAGA BigJob</li>
+<li><strong>multiprocessing</strong>: simple and included, example</li>
+<li>Message broker: <strong>IPython parallel</strong>, Celery</li>
+</ul>
+<br> 
+and many, many more ...
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<h2>Bash/pbsdsh</h2>
+
+<pre class="bash"><code>#!/bin/bash
+PATH=$PBS_O_WORKDIR:$PBS_O_PATH
+TRIAL=$(($PBS_VNODENUM + $1))
+python work.py --time=5
+</code></pre>
+
+<br>
+
+<pre class="bash"><code>for i in {1..N}
+do
+  pbsdsh wrapper.sh $count
+  count=$(( $count + 12))
+done
+</code></pre>
+
+<p> A little <strong>painful</strong></p>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2> A little <strong>inefficient</strong> </h2>
+<img src="img/bash.svg" style="margin:0; auto;display:block; height: 325px;">
+</div>
+</section>
+
+<section class="slide">
+<iframe src="http://bl.ocks.org/mlunacek/raw/6590169"></iframe>
+</section>
+
+<section class="slide">
+<div>
+<h2> <strong>MPI</strong> example</h2>
+
+<img src="img/vw.png" style="height=100px; margin:0; auto;display:block;"  alt="some_text">	
+</div>
+</section>
+
+<section class="slide">
+<iframe src="http://nbviewer.ipython.org/6587193"></iframe>
+</section>
+
+<section class="slide">
+<iframe src="http://nbviewer.ipython.org/6570790"></iframe>
+</section>
+
+
+<section class="slide">
+<div>
+<h2> Message <strong>queues</strong></h2>
+
+<img src="img/ipython.png" style="height=100px margin:10px auto;display:block;"  alt="some_text">		
+
+<strong>elasticity</strong>, memory, fault-tolerance
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2> Celery</h2>
+</div>
+</section>
+
+<section class="slide">
+<iframe src="http://nbviewer.ipython.org/6574021"></iframe>
+</section>
+
+
+<section class="slide">
+<div>
+<h2><strong>Weak</strong> Scaling</h2>
+Compare: mpi4py, IPython Parallel, Celery
+<br>
+What recommendations can we offer?
+
+<br>
+Best case scenario
+<ul>
+<li>small messages, limited file IO, sleep</li>
+</ul>
+
+<p>Weak scaling</p>
+<ul><li>task = 10 * number of cores</li>
+<li>up to 12,288 cores</li>
+<li>time uniform(27,33) seconds</li>
+</ul>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Initialization</h2>
+<img src="img/pres_init_time.png" style="margin:5px auto; height:500px; display:block;"  alt="some_text">		
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Weak scaling time</h2>
+<img src="img/pres_time.png" style="margin:5px auto; height:500px; display:block;">	
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Weak scaling efficiency</h2>
+<img src="img/pres_efficiency.png" style="margin:5px auto; height:500px; display:block;">	
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2> Compare </h2>
+<table class="table table-bordered">
+	<tr class="success">
+		   <td>mpi4py</td>
+	    <td>many cores, not fault-tolerant</td> 
+	</tr>
+	<tr class="success">
+	    <td>IPython</td>
+	    <td>100 cores, fault-tolerant</td>
+	</tr>
+	<tr class="success">
+	    <td>IPython</td>
+	    <td>many cores, fault-tolerant, consistent time</td>
+	</tr>
+	<tr class="warning">
+	    <td>Celery</td>
+	    <td>many cores, fault-tolerant, variable time</td>
+	</tr>
+	<tr class="success">
+	    <td>Multiprocessing</td>
+	    <td>single-node</td>
+	</tr>
+</table>
+
+<p>Issues</p>
+<table class="table table-bordered">
+	<tr class="error">
+	    <td>IPython, Celery</td>
+	    <td>launching</td>
+	</tr>
+	<tr class="error">
+	    <td>all</td>
+	    <td>user abstraction</td>
+	</tr>
+</table>
+</div>
+</section>	
+
+
+<section class="slide">
+<div>
+<h2>Conclusions</h2>
+<p>Python is an excellent way to manage MTC jobs</p>
+<p>Python provides great <strong>abstraction</strong></p>
+<p>IPython and Celery </p>
+<ul>
+	<li><strong>elastic</strong>, memory, fault-tolerant</li>
+</ul>
+
+<p>Moving forward</p>
+<ul>
+	<li> Simple interface for MTC</li>	
+	<li> Realistic tasks </li>
+</ul>			
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<h2>References</h2>
+
+<strong>Paper</strong> 
+<p style="font-size: 18px;">
+<em>Scaling of Many-Task Computing Approaches in Python on Cluster Supercomputers</em> <br>Monte Lunacek <em>et al.</em>
+IEEE Cluster 2013</p>
+
+<p><strong>Tutorials</strong> 
+<br>Univeristy of Colorado Computational Science and Engineering <a href="http://www.meetup.com/University-of-Colorado-Computational-Science-and-Engineering/">Meetup</a>	
+<p><strong>slides and code</strong> 
+<br>https://github.com/mlunacek/... </p>
+
+http://nbviewer.ipython.org/6587193
+http://nbviewer.ipython.org/6570790
+http://nbviewer.ipython.org/6574021
+http://bl.ocks.org/mlunacek/raw/6590169/
+
+</div>
+</section>
+	
+
+<section class="slide shout">
+	<div>
+		<h2>Thanks!</h2>
+	</div>
+</section>
+
+
+
+	<!-- end of slides -->
+	</div></div>
+	<script src="js/shower.min.js"></script>
+</body>
 </html>

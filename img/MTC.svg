@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="320.5px" height="238.58px" viewBox="-40.167 -30.08 320.5 238.58" enable-background="new -40.167 -30.08 320.5 238.58"
+	 xml:space="preserve">
+<g id="XMLID_1_" opacity="0.8" enable-background="new    ">
+	
+		<image overflow="visible" opacity="0.3" enable-background="new    " width="139" height="129" xlink:href="37DAA41321A12B36.png"  transform="matrix(1 0 0 1 3.834 -30.0801)">
+	</image>
+	<g>
+		<ellipse fill="#A6CEE3" cx="68.526" cy="29.652" rx="53.761" ry="48.936"/>
+	</g>
+</g>
+<g opacity="0.8" enable-background="new    ">
+	
+		<image overflow="visible" opacity="0.3" enable-background="new    " width="172" height="136" xlink:href="37DAA41321A12B3C.png"  transform="matrix(1 0 0 1 95.834 -24.0801)">
+	</image>
+	<g>
+		<ellipse fill="#33A02C" cx="176.839" cy="39.257" rx="70.676" ry="52.663"/>
+	</g>
+</g>
+<g opacity="0.8" enable-background="new    ">
+	
+		<image overflow="visible" opacity="0.3" enable-background="new    " width="185" height="109" xlink:href="37DAA41321A12B3E.png"  transform="matrix(1 0 0 1 92.834 70.9199)">
+	</image>
+	<g>
+		<ellipse fill="#B2DF8A" cx="180.36" cy="120.711" rx="77.239" ry="39.144"/>
+	</g>
+</g>
+<g opacity="0.8" enable-background="new    ">
+	
+		<image overflow="visible" opacity="0.3" enable-background="new    " width="104" height="123" xlink:href="37DAA41321A12B3B.png"  transform="matrix(1 0 0 1 9.834 57.9199)">
+	</image>
+	<g>
+		<ellipse fill="#1F78B4" cx="56.906" cy="114.157" rx="36.739" ry="45.983"/>
+	</g>
+</g>
+<g enable-background="new    ">
+	
+		<image overflow="visible" opacity="0.3" enable-background="new    " width="90" height="44" xlink:href="37DAA41321A12B34.png"  transform="matrix(1 0 0 1 30.834 -11.0801)">
+	</image>
+	<g>
+		<text transform="matrix(1 0 0 1 41.1206 9.541)" fill="#444443" font-family="'PTSans-Bold'" font-size="12">MapReduce</text>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 46.4551 25.6064)" font-family="'PTSans-Regular'" font-size="8">Data Analysis</text>
+<text transform="matrix(1 0 0 1 41.1206 36.3408)" font-family="'PTSans-Regular'" font-size="8">Mining</text>
+<g enable-background="new    ">
+	
+		<image overflow="visible" opacity="0.3" enable-background="new    " width="53" height="44" xlink:href="37DAA41321A12B29.png"  transform="matrix(1 0 0 1 35.834 77.9199)">
+	</image>
+	<g>
+		<text transform="matrix(1.0143 0 0 1 46.4551 98.6152)" fill="#444443" font-family="'PTSans-Bold'" font-size="12">HPC</text>
+	</g>
+</g>
+<text transform="matrix(1.0143 0 0 1 35.7881 141.3643)" font-family="'MyriadPro-Bold'" font-size="13.8884"> </text>
+<g enable-background="new    ">
+	
+		<image overflow="visible" opacity="0.3" enable-background="new    " width="52" height="44" xlink:href="37DAA41321A12B2A.png"  transform="matrix(1 0 0 1 156.834 90.9199)">
+	</image>
+	<g>
+		<text transform="matrix(1 0 0 1 167.1665 111.4854)" fill="#444443" font-family="'PTSans-Bold'" font-size="12">HTC</text>
+	</g>
+</g>
+<g enable-background="new    ">
+	
+		<image overflow="visible" opacity="0.3" enable-background="new    " width="75" height="44" xlink:href="37DAA41321A12B2B.png"  transform="matrix(1 0 0 1 149.834 2.9199)">
+	</image>
+	<g>
+		<text transform="matrix(1 0 0 1 160.7876 23.2725)" fill="#444443" font-family="'PTSans-Bold'" font-size="12">Big Data</text>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 97.1079 184.1465)" fill="#777574" font-family="'PTSans-Regular'" font-size="10">Number of tasks</text>
+<text transform="matrix(-0.002 -1 1 -0.002 -11.5566 103.8169)" fill="#777574" font-family="'PTSans-Regular'" font-size="10">Size of data</text>
+<text transform="matrix(1 0 0 1 -30.2109 160.125)" fill="#777574" font-family="'PTSans-Regular'" font-size="10">Low</text>
+<text transform="matrix(1 0 0 1 -30.2109 -3.5996)" fill="#777574" font-family="'PTSans-Regular'" font-size="10">High</text>
+<text transform="matrix(1 0 0 1 10.6211 184.1465)" fill="#777574" font-family="'PTSans-Regular'" font-size="10">Few</text>
+<text transform="matrix(1 0 0 1 244.6206 184.1465)" fill="#777574" font-family="'PTSans-Regular'" font-size="10">1M</text>
+<text transform="matrix(1 0 0 1 41.1206 114.1562)" fill="#E9EAE8" font-family="'PTSans-Regular'" font-size="8">MPI</text>
+<text transform="matrix(1 0 0 1 52.9058 124.5859)" fill="#E9EAE8" font-family="'PTSans-Regular'" font-size="8">OpenMP</text>
+<text transform="matrix(1 0 0 1 35.7881 136.9199)" fill="#E9EAE8" font-family="'PTSans-Regular'" font-size="8">OpenACC</text>
+<text transform="matrix(1 0 0 1 56.9058 51.5869)" fill="#646663" font-family="'PTSans-Regular'" font-size="8">Hadoop</text>
+<text transform="matrix(1 0 0 1 168.8335 36.3408)" fill="#E9EAE8" font-family="'PTSans-Regular'" font-size="8">Pig</text>
+<text transform="matrix(1 0 0 1 186.1665 36.3408)" fill="#E9EAE8" font-family="'PTSans-Regular'" font-size="8">Hive</text>
+<text transform="matrix(1 0 0 1 148.7178 124.5859)" fill="#646663" font-family="'PTSans-Regular'" font-size="8">PBS</text>
+<text transform="matrix(1 0 0 1 176.8403 124.5859)" fill="#646663" font-family="'PTSans-Regular'" font-size="8">Condor</text>
+<text transform="matrix(1 0 0 1 162.5 136.9199)" fill="#646663" font-family="'PTSans-Regular'" font-size="8">DAGMan</text>
+<text transform="matrix(1 0 0 1 202.1675 135.585)" fill="#646663" font-family="'PTSans-Regular'" font-size="8">Swift</text>
+<text transform="matrix(1 0 0 1 174.4995 149.252)" fill="#646663" font-family="'PTSans-Regular'" font-size="8">Falkon</text>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="8.613" y1="169.167" x2="261.167" y2="169.167"/>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="8.613" y1="169.167" x2="8.613" y2="-16.413"/>
+<text transform="matrix(1 0 0 1 10.6211 199.5879)" fill="#AFAFAA" font-family="'PTSans-Regular'" font-size="7">High Performance Computing (HPC)</text>
+<text transform="matrix(1 0 0 1 162.499 199.5879)" fill="#AFAFAA" font-family="'PTSans-Regular'" font-size="7">High Thoughtput Computing (HTC)</text>
+</svg>
