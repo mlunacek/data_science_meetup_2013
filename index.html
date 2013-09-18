@@ -44,7 +44,7 @@
 <ol>
 <li>High Performance Computing
 <ul>
-	<li>Current types of applications</li>
+	<li>Types of applications</li>
 	<li>Define Many-task computing</li>
 </ul>
 </li>
@@ -398,6 +398,25 @@ if __name__ == '__main__':
 
 </div>
 </section>
+<!-- 
+<section class="slide">
+<div>
+<pre class="cpp"><code>
+hdf5Reader::hdf5Reader(const std::string &filename){ 
+    m_filename = filename;
+    file_id = H5Fopen(m_filename.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+    dataset_id = H5Dopen(file_id, "x", H5P_DEFAULT);
+    space_id = H5Dget_space(dataset_id);
+    m_length = H5Sget_simple_extent_npoints(space_id);
+    hsize_t  dims[2];
+    hsize_t  mdims[2];
+    status = H5Sget_simple_extent_dims(space_id,dims,mdims);
+    m_rows = dims[0];
+    m_cols = dims[1];
+}
+</code></pre>
+</div>
+</section> -->
 
 <section class="slide">
 <div>
@@ -475,7 +494,7 @@ Condor/Moab/SLURM
 <br>
 Bash/pbsdsh: painful example
 <br>
-MPI <strong>mpi4py</strong>: not exactly what we want
+MPI <strong>mpi4py</strong>: not always what we want
 <br>
 Python
 <ul>
@@ -527,7 +546,28 @@ done
 
 <section class="slide">
 <div>
-<h2> <strong>MPI</strong> example</h2>
+<h2> Message <strong>queues</strong></h2>
+
+<img src="img/ipython.png" style="height=90px margin:5px auto;display:block;"  alt="some_text">		
+
+<strong>elasticity</strong>, memory, fault-tolerance
+
+<p>Examples: <a href="http://www.celeryproject.org/">celery</a> <a href="http://www.amqp.org/">(AMQP)</a> and
+<a href="ipython.org">IPython</a> <a href="http://zeromq.org/">(0MQ)</a> .
+</p>
+
+</div>
+</section>
+
+<!--<section class="slide">-->
+<!--<div>-->
+<!--<h2> Celery</h2>-->
+<!--</div>-->
+<!--</section>-->
+
+<section class="slide">
+<div>
+<h2> <strong>Examples</strong></h2>
 
 <img src="img/vw.png" style="height=100px; margin:0; auto;display:block;"  alt="some_text">	
 </div>
@@ -542,21 +582,7 @@ done
 </section>
 
 
-<section class="slide">
-<div>
-<h2> Message <strong>queues</strong></h2>
 
-<img src="img/ipython.png" style="height=100px margin:10px auto;display:block;"  alt="some_text">		
-
-<strong>elasticity</strong>, memory, fault-tolerance
-</div>
-</section>
-
-<!--<section class="slide">-->
-<!--<div>-->
-<!--<h2> Celery</h2>-->
-<!--</div>-->
-<!--</section>-->
 
 <section class="slide">
 <iframe src="http://nbviewer.ipython.org/6574021"></iframe>
@@ -630,8 +656,8 @@ Best case scenario
 	    <td>single-node</td>
 	</tr>
 </table>
-
-<p>Issues</p>
+<!-- 
+<p>Issues</p> -->
 <table class="table table-bordered">
 	<tr class="error">
 	    <td>IPython, Celery</td>
@@ -658,7 +684,9 @@ Best case scenario
 
 <p>Moving forward</p>
 <ul>
-	<li> Simple interface for MTC</li>	
+	<li> Simple interface for MTC
+		<a href="https://github.com/mlunacek/load_balance_ipython">load_balance_ipython</a>
+	</li>
 	<li> Realistic tasks </li>
 </ul>			
 </div>
